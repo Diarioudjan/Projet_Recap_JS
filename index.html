@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mini Projet JS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header id="main-header">Bienvenue sur mon mini projet</header>
+
+  <section class="buttons-section">
+    <button class="btn">Bouton 1</button>
+    <button class="btn">Bouton 2</button>
+    <button class="btn">Bouton 3</button>
+  </section>
+
+  <section class="hover-box">Survolez-moi</section>
+
+  <section class="keypress-display">
+    <p>Touche pressée : <span id="key"></span></p>
+  </section>
+
+  <section class="form-section">
+    <form id="demo-form">
+      <input type="text" placeholder="Nom" required>
+      <button type="submit">Envoyer</button>
+    </form>
+  </section>
+
+  <section class="click-zone" id="parent">
+    Parent
+    <div id="child">Enfant (cliquez-moi)</div>
+  </section>
+
+  <section>
+    <button id="removeClickBtn">Cliquez-moi (supprimé après 5s)</button>
+  </section>
+
+  <section class="screen-size">
+    Taille de l’écran : <span id="screenWidth"></span> px
+  </section>
+
+  <section>
+    <button id="changeColorBtn">Changer la couleur du thème</button>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>

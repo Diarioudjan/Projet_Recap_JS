@@ -1,0 +1,163 @@
+/* Style global */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+/* Style pour le header */
+#main-header {
+  background-color: #4CAF50;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  font-size: 28px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour les boutons */
+.buttons-section .btn {
+  margin: 10px;
+  padding: 12px 25px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.buttons-section .btn:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Style pour la zone de survol */
+.hover-box {
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px dashed #ccc;
+  text-align: center;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour la section de saisie */
+.keypress-display {
+  margin: 20px auto;
+  font-size: 18px;
+  text-align: center;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour le formulaire */
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-section input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  font-size: 16px;
+}
+
+.form-section button {
+  padding: 12px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.form-section button:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Style pour la zone de clic */
+.click-zone {
+  margin: 20px auto;
+  padding: 20px;
+  border: 2px solid #000;
+  text-align: center;
+  max-width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+#child {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f8d7da;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Style pour le bouton de suppression */
+#removeClickBtn {
+  margin: 20px auto;
+  padding: 12px 25px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: block;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+#removeClickBtn:hover {
+  background-color: #c82333;
+  transform: scale(1.05);
+}
+
+/* Style pour l'affichage de la taille de l'écran */
+.screen-size {
+  margin: 20px auto;
+  font-size: 18px;
+  text-align: center;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style pour le bouton de changement de couleur */
+#changeColorBtn {
+  margin: 20px auto;
+  padding: 12px 25px;
+  background-color: #ffc107;
+  color: black;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  display: block;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+#changeColorBtn:hover {
+  background-color: #e0a800;
+  transform: scale(1.05);
+}
