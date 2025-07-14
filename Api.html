@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>API & Asynchronisme</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    button {
+      margin: 10px 5px;
+      padding: 10px;
+      font-weight: bold;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    input {
+      margin: 5px;
+      padding: 8px;
+    }
+    #output {
+      margin-top: 20px;
+      background: white;
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #ccc;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>🌐 API JSONPlaceholder - Utilisateurs</h2>
+
+  <div>
+    <button onclick="getUsers()">Afficher les utilisateurs (API)</button><br>
+
+    <input type="text" id="newName" placeholder="Nom">
+    <input type="email" id="newEmail" placeholder="Email"><br>
+
+    <button onclick="addUser()">Ajouter un utilisateur</button>
+    <button onclick="resetForm()">Réinitialiser le formulaire</button><br>
+
+    <button onclick="updateUser()">Modifier l'utilisateur ID 1</button>
+    <button onclick="deleteUser()">Supprimer l'utilisateur ID 1</button>
+  </div>
+
+  <div id="output"></div>
+
+  <script>
+    const apiURL = "https://jsonplaceholder.typicode.com/users";
+    const output = document.getElementById("output");
+
+    // Chargement initial des utilisateurs sauvegardés
+    window.onload = () => {
+      showSavedUsers();
+    };
+
+    // GET depuis l’API
+    async function getUsers() {
+      try {
+        const res = await fetch(apiURL);
+        const users = await res.json();
+        let html = "<h3>Liste des utilisateurs (API) :</h3>";
+        users.forEach(u => {
+          html += `<p>👤 ${u.name} -${u.email}</p>`;
+        });
+        output.innerHTML = html;
+      } catch (err) {
+        output.innerHTML = "❌ Erreur lors du chargement des utilisateurs";
+        console.error(err);
+      }
+    }
+
+    // POST (ajout + localStorage)
+    async function addUser() {
+      const name = document.getElementById("newName").value;
+      const email = document.getElementById("newEmail").value;
+
+      if (!name || !email) {
+        alert("Veuillez remplir le nom et l'email !");
+        return;
+      }
+
+      try {
+        const res = await fetch(apiURL, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email })
+        });
+        const user = await res.json();
+
+        // Affichage
+        output.innerHTML = `<p>✅ Utilisateur ajouté : ${user.name} (${user.email})</p>`;
+
+        // Sauvegarde dans localStorage
+        saveUser(user);
+
+        // Réinitialisation du formulaire
+        resetForm();
+
+      } catch (err) {
+        output.innerHTML = "❌ Erreur lors de l'ajout";
+        console.error(err);
+      }
+    }
+
+    // Sauvegarder un utilisateur localement
+    function saveUser(user) {
+      const users = JSON.parse(localStorage.getItem("savedUsers") || "[]");
+      users.push(user);
+      localStorage.setItem("savedUsers", JSON.stringify(users));
+    }
+
+    // Affichage des utilisateurs locaux
+    function showSavedUsers() {
+      const users = JSON.parse(localStorage.getItem("savedUsers") || "[]");
+      if (users.length > 0) {
+        let html = "<h3>Utilisateurs enregistrés localement :</h3>";
+        users.forEach(u => {
+          html += `<p>💾 ${u.name} (${u.email})</p>`;
+        });
+        output.innerHTML = html;
+      }
+    }
+
+    // PUT
+    async function updateUser() {
+      try {
+        const res = await fetch(`${apiURL}/1`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: "Nom Modifié", email: "modifie@example.com" })
+        });
+        const user = await res.json();
+        output.innerHTML = `<p>✏️ Utilisateur modifié : ${user.name} (${user.email})</p>`;
+      } catch (err) {
+        output.innerHTML = "❌ Erreur lors de la modification";
+      }
+      showSavedUsers();
+    }
+    // DELETE
+    async function deleteUser() {
+      try {
+        const res = await fetch(`${apiURL}/1`, { method: "DELETE" });
+        if (res.ok) {
+          output.innerHTML = "🗑️ Utilisateur ID 1 supprimé";
+        } else {
+          output.innerHTML = "❌ Erreur lors de la suppression";
+        }
+      } catch (err) {
+        output.innerHTML = "❌ Erreur lors de la suppression";
+      }
+      showSavedUsers();
+    }
+    // Réinitialiser le formulaire
+    function resetForm() {
+      document.getElementById("newName").value = "";
+      document.getElementById("newEmail").value = "";
+      output.innerHTML = "🔄 Formulaire réinitialisé";
+    }
+  </script>
+</body>
+</html>

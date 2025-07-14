@@ -1,5 +1,6 @@
 // Gestion des boutons
 document.querySelectorAll('.btn').forEach(button => {
+  console.log(`Bouton trouvé : ${button.textContent}`); // Log pour vérifier les boutons
   button.addEventListener('click', () => {
     alert(`Vous avez cliqué sur ${button.textContent}`);
   });
@@ -7,6 +8,7 @@ document.querySelectorAll('.btn').forEach(button => {
 
 // Gestion du survol
 const hoverBox = document.querySelector('.hover-box');
+console.log('Zone de survol détectée'); // Log pour vérifier la zone de survol
 hoverBox.addEventListener('mouseover', () => {
   hoverBox.style.backgroundColor = '#d4edda';
 });
@@ -51,6 +53,6 @@ updateScreenWidth();
 // Changement de couleur du thème
 const changeColorBtn = document.getElementById('changeColorBtn');
 changeColorBtn.addEventListener('click', () => {
-  document.body.style.backgroundColor =
+  dgittocument.body.style.backgroundColor =
     document.body.style.backgroundColor === 'lightblue' ? 'white' : 'lightblue';
 });
